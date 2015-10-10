@@ -1,0 +1,5 @@
+tx.executeSql('INSERT INTO LOGS (id, buildingid, roomid, building, room, image, wifi, power) VALUES (1, 1, 1, "Building 1", "LectureRoom1", "b1l1", 1, 1)');
+tx.executeSql('INSERT INTO LOGS (id, buildingid, roomid, building, room, image, wifi, power) VALUES (2, 1, 2, "Building 1", "LectureRoom2", "b1l2", 0, 1)');
+tx.executeSql('INSERT INTO LOGS (id, buildingid, roomid, building, room, image, wifi, power) VALUES (3, 2, 1, "Building 2", "LectureRoom1", "b2l1", 1, 0)');
+tx.executeSql('INSERT INTO LOGS (id, buildingid, roomid, building, room, image, wifi, power) VALUES (4, 2, 2, "Building 2", "LectureRoom2", "b2l2", 0, 0)');
+tx.executeSql('INSERT INTO LOGS (id, buildingid, roomid, building, room, image, wifi, power) VALUES (5, 2, 2, "Building 2", "LectureRoom2", "b2l2", 0, 0)');

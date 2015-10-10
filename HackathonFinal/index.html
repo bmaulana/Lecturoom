@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+
+				<title>Lecturoom</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		
+		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
+
+<script>
+        function initialize() {
+            // Initialize the first location (UCL) on the map
+            var mapProp = {
+                center: new google.maps.LatLng(51.524329, -0.134454),
+                zoom: 17,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControl: true,
+                streetViewControl: true
+            };
+
+            var locations = [
+			    ["<a href=''>Anatomy Building</a>&thinsp;&thinsp;&thinsp;", 51.523597, -0.133589],
+				["<a href=''>UCL Institute of Archaelogy</a>&thinsp;&thinsp;&thinsp;", 51.524940, -0.131590],
+				["<a href=''>26 Bedford Way</a>&thinsp;&thinsp;&thinsp;", 51.523598, -0.128137],
+				["<a href=''>Chadwick Building</a>&thinsp;&thinsp;&thinsp;", 51.524142, -0.134140],
+				["<a href=''>Chandler House</a>&thinsp;&thinsp;&thinsp;", 51.525835, -0.122731],
+				["<a href=''>Christopher Ingold Building</a>&thinsp;&thinsp;&thinsp;", 51.525391, -0.132176],
+				["<a href=''>Cruciform Building</a>&thinsp;&thinsp;&thinsp;", 51.524144, -0.134988],
+				["<a href=''>Darwin Building</a>&thinsp;&thinsp;&thinsp;", 51.523190, -0.133215],
+				["<a href=''>Drayton House</a>&thinsp;&thinsp;&thinsp;", 51.526078, -0.133305],
+				["<a href=''>Engineering Front Building</a>&thinsp;&thinsp;&thinsp;", 51.522804, -0.131940],
+				["<a href=''>24 Gordon Square</a>&thinsp;&thinsp;&thinsp;", 51.524405, -0.131771],
+				["<a href=''>25 Gordon Square</a>&thinsp;&thinsp;&thinsp;", 51.524305, -0.131671],
+				["<a href=''>UCL Union (25 Gordon Street)</a>&thinsp;&thinsp;&thinsp;", 51.525643, -0.133383],
+				["<a href=''>Malet Place Engineering Building</a>&thinsp;&thinsp;&thinsp;", 51.523166, -0.132254],
+				["<a href=''>Medawar Building</a>&thinsp;&thinsp;&thinsp;", 51.523682, -0.132076],
+				["<a href=''>Medical Sciences</a>&thinsp;&thinsp;&thinsp;", 51.523826, -0.132946],
+				["<a href=''>Pearson Building</a>&thinsp;&thinsp;&thinsp;", 51.524644, -0.134668],
+				["<a href=''>UCL Physics Building</a>&thinsp;&thinsp;&thinsp;", 51.525304, -0.133509],
+				["<a href=''>Roberts Building</a>&thinsp;&thinsp;&thinsp;", 51.522912, -0.132041],
+				["<a href=''>South Wing</a>&thinsp;&thinsp;&thinsp;", 51.523967, -0.133538],
+				["<a href=''>1-19 Torrington Place</a>&thinsp;&thinsp;&thinsp;", 51.521867, -0.134321],
+				["<a href=''>Wilkins Building (Main Building)</a>&thinsp;&thinsp;&thinsp;", 51.524736, -0.133541] // ########### ADD LOCATIONS HERE ###########
+            ];
+
+            var map = new google.maps.Map(document.getElementById("googleMaps"), mapProp);
+            var infowindow = new google.maps.InfoWindow();
+            var marker, i;
+
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map,
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(locations[i][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+
+                google.maps.event.addListener(map, 'center_changed', function () {
+                    // Try loading an image from the internet to test connection
+                    var image = new Image();
+                    image.onload = function () { }; // Internet connected
+                    image.onerror = function () { // Internet disconnected
+                        map.setZoom(17);
+                        map.panTo(marker.getPosition());
+                    };
+                    image.src = 'http://gfx2.hotmail.com/mail/uxp/w4/m4/pr014/h/s7.png?d=' + escape(Date());
+                });
+            }
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+	</head>
+	<body class="landing">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+				
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="index.html">Lecturoom</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="index.html">Home</a></li>
+											<li><a href="index.html">Search</a></li>
+											<li><a href="index.html">Map</a></li>
+											<li><a href="room.html">Buildings List</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+			
+			
+				<!-- Banner -->
+					<section id="banner">
+						<div class="inner">
+							<h2 id="title">Lecturoom</h2>
+							<div>
+								<div class="6u 12u$(xsmall)" id="searchBox" width="100%">
+									<input type="text" name="demo-name" id="searchText" value="" placeholder="Name"/>
+								</div>
+								<div width="100%">
+									<button onclick="onSearch()">GO</button>
+								</div>
+							</div>
+							<form>
+								<div>
+									<!--<div class="4u 12u$(small)">
+										<input type="radio" id="wifi-low" name="wifi" checked>
+										<label for="wifi-low">Low</label>
+									</div>
+									<div class="4u 12u$(small)">
+										<input type="radio" id="wifi-normal" name="wifi">
+										<label for="demo-priority-normal">Medium</label>
+									</div>
+									<div class="4u$ 12u$(small)">
+										<input type="radio" id="wifi-high" name="wifi">
+										<label for="demo-priority-high">High</label>
+									</div>-->
+									<div class="4u$ 12u$(small)">
+										<input type="checkbox" id="wifi" name="wifi" checked>
+										<label for="demo-human">Wi-Fi</label>
+									</div>
+									<div class="4u$ 12u$(small)">
+										<input type="checkbox" id="powerSockets" name="powerSockets" checked>
+										<label for="demo-human">Power Sockets</label>
+									</div>
+								</div>																
+							</form>						
+					</section>
+					<section id="map">
+						<div id="googleMaps" style="width:85%;height:35em; margin:auto; margin-top:2em;"></div>
+							
+						</div>
+					</section>
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+			
+
+	</body>
+</html>
